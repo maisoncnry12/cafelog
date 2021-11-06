@@ -17,6 +17,9 @@
 
 ## 設計書
 後日掲載
+ER図
+テーブル定義書
+アプリケーション詳細設計書
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1iLCIShQ8B0HJYOIrh5fJfpCn84Gzu50Rqfan4XW2y8k/edit#gid=1003175931
