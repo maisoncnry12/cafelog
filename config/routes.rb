@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   get '/' => 'homes#top'
-  get 'home/about' => 'homes#about'
+  get '/about' => 'homes#about'
 
   resources :users, only: [:show, :edit, :update]do
     # フォロー/フォロワー
@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   end
 
   resources :posts,except: [:show]do
-    resources :favorites, only: [:index, :create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+    get 'post_favorite' => 'favorites#index'
     resource :comments, only: [:create, :destroy]
   end
 
