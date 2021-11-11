@@ -1,5 +1,5 @@
 <h3>User Info</h3>
-<div>Plofile Image</div>
-<div>Name</div>
-<div>Introduction</div>
-<dib>Back|Edit</dib>
+<div>Plofile Image:<%= @user.plofile_image_id %></div>
+<div>Name:<%= @user.name %></div>
+<div>Introduction:<%= @user.introduction %></div>
+<div><%= link_to "Back", "/" %>|<%= link_to "Edit", edit_user_path %> </div>
