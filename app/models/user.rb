@@ -22,5 +22,5 @@ class User < ApplicationRecord
              followings.include?(user)
          end
 
-         attachment :profile_image_id
+         attachment :profile_image
 end
