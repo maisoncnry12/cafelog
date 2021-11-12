@@ -1,1 +1,14 @@
 <h3>New Cafe</h3>
+<%= form_with model: @post, local:true do |f| %>
+<div>Photo</div>
+<%= f.attachment_field :post_image %>
+<div>Cafe's Name</div>
+<%= f.text_field :shop_name %>
+<div>Text</div>
+<%= f.text_area :body %>
+<!--<div>Area</div>-->
+<%#= f.text_field :area_id %>
+<div>Recommend</div>
+<!--星の評価-->
+<div><%= f.submit 'POST' %></div>
+<% end %>
