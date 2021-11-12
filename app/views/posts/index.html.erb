@@ -1,0 +1,24 @@
+<h3>投稿一覧</h3>
+<% @posts.each do |post| %>
+<div>
+  <p><%= image_tag('no_image.jpg') %><%= post.user.name %></p>
+  <p><%= attachment_image_tag post, :post_image %></p>
+  <!--いいね-->
+  <p>Cafe's Name：<%= post.shop_name %></p>
+  <!--<p>Area : <%#= post.area_id %></p>-->
+  <p>Text：<%= post.body %></p>
+
+  <!--コメント-->
+  <!--<p>Comments</p>-->
+  <!--<p>POST</p>-->
+
+  <% if post.user == current_user %>
+   <%= link_to "Edit", edit_post_path(current_user) %>
+  <% end %>
+
+  <% if post.user == current_user %>
+   <%= link_to "Destroy", posts_path, method: :delete %>
+  <% end %>
+
+</div>
+<% end %>
