@@ -13,11 +13,11 @@
   <!--<p>POST</p>-->
 
   <% if post.user == current_user %>
-   <%= link_to "Edit", edit_post_path(current_user) %>
+   <%= link_to "Edit", edit_post_path(post.id) %>
   <% end %>
 
   <% if post.user == current_user %>
-   <%= link_to "Destroy", posts_path, method: :delete %>
+   <%= link_to "Destroy", post_path(post.id), method: :delete %>
   <% end %>
 
 </div>
