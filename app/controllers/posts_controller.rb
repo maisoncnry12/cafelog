@@ -13,6 +13,9 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    
+    # @comments = @post.comments
+    @comment = current_user.comments.new
   end
 
   def edit

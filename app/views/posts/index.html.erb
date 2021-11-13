@@ -4,21 +4,49 @@
   <p><%= image_tag('no_image.jpg') %><%= post.user.name %></p>
   <p><%= attachment_image_tag post, :post_image %></p>
   <!--いいね-->
+   <% if post.favorited_by?(current_user) %>
+    <p>
+      <%= link_to post_favorites_path(post.id), method: :delete do %>
+        ♥<%= post.favorites.count %>
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to post_favorites_path(post.id), method: :post do %>
+        ♡<%= post.favorites.count %>
+      <% end %>
+    </p>
+  <% end %>
+
   <p>Cafe's Name：<%= post.shop_name %></p>
   <!--<p>Area : <%#= post.area_id %></p>-->
   <p>Text：<%= post.body %></p>
 
   <!--コメント-->
-  <!--<p>Comments</p>-->
-  <!--<p>POST</p>-->
+  <p>Comments :<% @comment.comment %> </p>
+   <%= form_with(model:[post, @comment], local: true) do |f| %>
+     <%= f.text_area :comment, rows:'3',placeholder: "コメントをここに" %>
+     <%= f.submit "Post" %>
+     <% end %>
+     <%# if @comment.user == current_user %>
+     <!--<div>-->
+      <%#= link_to "削除", post_comment_path(post.id), method: :delete %>
+     <!--</div>-->
+     <%# end %>
+     
+     
+     
 
+  </div>
+  <!--<p>POST</p>-->
+ <div>
   <% if post.user == current_user %>
    <%= link_to "Edit", edit_post_path(post.id) %>
   <% end %>
-
   <% if post.user == current_user %>
    <%= link_to "Destroy", post_path(post.id), method: :delete %>
   <% end %>
+ </duv>
 
 </div>
 <% end %>
