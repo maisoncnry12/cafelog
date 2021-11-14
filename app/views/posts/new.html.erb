@@ -6,9 +6,28 @@
 <%= f.text_field :shop_name %>
 <div>Text</div>
 <%= f.text_area :body %>
+
 <!--<div>Area</div>-->
 <%#= f.text_field :area_id %>
-<div>Recommend</div>
+
 <!--星の評価-->
+<div>Recommend</div>
+ <div class="form-group row" id="star">
+    <%= f.label :rate,'Recommend', class:'col-md-3 col-form-label' %>
+    <%= f.hidden_field :rate, id: :review_star %>
+ </div>
+ 
+   <!-- 評価javascript -->
+  <script>
+  $('#star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'post[rate]',
+    half: true,
+  });
+  </script> 
+  
 <div><%= f.submit 'POST' %></div>
 <% end %>
