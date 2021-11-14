@@ -16,6 +16,22 @@
  <div>Recommend</div>
 
  <!--星の評価-->
+ <div class="form-group" id="star">
+    <%= f.label :rate,'Recommend', class:' col-form-label' %>
+    <%= f.hidden_field :rate, id: :review_star %>
+ </div>
+ 
+   <!-- 評価javascript -->
+  <script>
+  $('#star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'post[rate]',
+    half: true,
+  });
+  </script> 
 
  <div><%= f.submit 'Update' %></div>
  <div><%= link_to "Back", posts_path %></div>
