@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :posts,except: [:show]do
     resource :favorites, only: [:create, :destroy]
     get 'post_favorite' => 'favorites#index'
-    resource :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
 
   get "/search"=>"searchs#search"

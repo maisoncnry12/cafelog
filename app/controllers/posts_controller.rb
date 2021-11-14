@@ -13,7 +13,11 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    # @user = User.find_by(id: @post.user_id)
+
+    
+    # @comments = @post.comments
+    @comment = current_user.comments.new
+
   end
 
   def edit
