@@ -1,6 +1,7 @@
 <h3>投稿一覧</h3>
 <% @posts.each do |post| %>
 <div>
+  <!--プロフィール-->
   <p><%= image_tag('no_image.jpg') %><%= post.user.name %></p>
   <p><%= attachment_image_tag post, :post_image %></p>
   <!--いいね-->
@@ -18,9 +19,28 @@
     </p>
   <% end %>
 
+  <!--ショップ名-->
   <p>Cafe's Name：<%= post.shop_name %></p>
   <!--<p>Area : <%#= post.area_id %></p>-->
+  
+  <!--説明-->
   <p>Text：<%= post.body %></p>
+  
+  <!--評価-->
+ 
+         <div id="star-rate-<%= post.id %>">Recommend : </div>
+          <script>
+          $('#star-rate-<%= post.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= post.rate %>,
+          });
+          </script>  
+        <!--/星評価-->
 
   <!--コメント-->
   <p>Comments :<% @comment.comment %> </p>
