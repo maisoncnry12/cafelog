@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   # get 'followers' => 'relationships#followers', as: 'followers'
   end
 
-  resources :posts,except: [:show]do
+  resources :posts do
     resource :favorites, only: [:create, :destroy]
-    get 'post_favorite' => 'favorites#index'
+     get 'post_favorite' => 'favorites#index'
     resources :comments, only: [:create, :destroy]
   end
 

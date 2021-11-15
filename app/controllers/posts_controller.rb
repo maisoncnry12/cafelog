@@ -13,11 +13,13 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @comment = Comment.new
+  end
 
-    
-    # @comments = @post.comments
-    @comment = current_user.comments.new
-
+  def show
+    @post = Post.find(params[:id])
+    @comment = Comment.new      # フォーム用のインスタンス作成(コメント追加用)
+    @comments = @post.comments  # コメント一覧表示用
   end
 
   def edit
