@@ -1,0 +1,38 @@
+<h3>Cafe Edit</h3>
+<%= form_with model: @post, local:true do |f| %>
+
+ <div>Photo</div>
+ <%= attachment_image_tag @post, :post_image, :fill, 50, 50, fallback: "no_image2.jpg"%>
+ <%#= f.attachment_field :post_image %>
+
+ <div><label for="inputShopName">Cafe's Name</label></div>
+ <%= f.text_field :shop_name, autofocus: true, id:"inpuShopName" %>
+
+ <div><label for="inputBody">Text</label></div>
+ <%= f.text_area :body, autofocus: true, id:"inputBody"%>
+
+ <!--<div>Area</div>-->
+ <%#= f.text_field :area_id %>
+ <div>Recommend</div>
+
+ <!--星の評価-->
+ <div class="form-group" id="star">
+    <%= f.label :rate,'Recommend', class:' col-form-label' %>
+    <%= f.hidden_field :rate, id: :review_star %>
+ </div>
+ 
+   <!-- 評価javascript -->
+  <script>
+  $('#star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'post[rate]',
+    half: true,
+  });
+  </script> 
+
+ <div><%= f.submit 'Update' %></div>
+ <div><%= link_to "Back", posts_path %></div>
+<% end %>
