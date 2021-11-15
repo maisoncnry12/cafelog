@@ -1,0 +1,57 @@
+<h3>投稿詳細</h3>
+
+<p><%= image_tag('no_image.jpg') %><%= @post.user.name %></p>
+
+<!--投稿画像-->
+  <p><%= attachment_image_tag @post, :post_image %></p>
+  <!--いいね-->
+   <% if @post.favorited_by?(current_user) %>
+    <p>
+      <%= link_to post_favorites_path(@post.id), method: :delete do %>
+        ♥<%= @post.favorites.count %>
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to post_favorites_path(@post.id), method: :post do %>
+        ♡<%= @post.favorites.count %>
+      <% end %>
+    </p>
+  <% end %>
+
+  <!--ショップ名-->
+  <p>Cafe's Name：<%= @post.shop_name %></p>
+  <!--<p>Area : <%#= post.area_id %></p>-->
+
+  <!--説明-->
+  <p>Text：<%= @post.body %></p>
+
+  <!--評価-->
+
+         <div id="star-rate-<%= @post.id %>">Recommend : </div>
+          <script>
+          $('#star-rate-<%= @post.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @post.rate %>,
+          });
+          </script>
+        <!--/星評価-->
+
+  <!--コメント-->
+  <% @comments.each do |comment| %>
+   <p>Comments :<%= comment.comment %></p>
+  <!--コメント削除-->
+   <% if comment.user == current_user %>
+    <div>
+     <p><%= link_to "削除", post_comment_path(comment.post.id, comment.id), method: :delete %></p>
+    </div>
+   <% end %>
+
+  <% end %>
+
+  <div><%= link_to "Back", posts_path %></div>
