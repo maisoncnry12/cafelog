@@ -13,6 +13,13 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @comment = Comment.new
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    @comment = Comment.new      # フォーム用のインスタンス作成(コメント追加用)
+    @comments = @post.comments  # コメント一覧表示用
   end
 
   def edit
@@ -33,7 +40,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:user_id, :shop_name, :post_image, :body, :area_id)
+    params.require(:post).permit(:user_id, :shop_name, :post_image, :body, :rate, :area_id)
   end
 
 end
