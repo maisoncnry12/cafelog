@@ -76,3 +76,12 @@ gem 'kaminari','~> 1.2.1'
 gem 'rubocop', require:false 
 gem 'rubocop-rails', require:false
 gem 'dotenv-rails'
+<<<<<<< HEAD
+=======
+gem 'rspec-rails'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
+>>>>>>> 2560f1c (deploy setting)
