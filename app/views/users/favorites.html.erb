@@ -1,0 +1,22 @@
+<h3>Favorites</h3>
+<% @favorite_posts.each do |post| %>
+<p><%= image_tag('no_image.jpg') %><%= post.user.name %></p>
+<p><%= attachment_image_tag post, :post_image %></p>
+<i class="fa fa-heart unlike-btn"></i>
+<%= post.favorites.length %>
+<p>Cafe's Name：<%= post.shop_name %></p>
+<p>Text：<%= post.body %></p>
+<p id="star-rate-<%= post.id %>">Recommend : </p>
+<script>
+          $('#star-rate-<%= post.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= post.rate %>,
+          });
+          </script>
+
+<% end %>
