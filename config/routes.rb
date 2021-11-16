@@ -18,8 +18,10 @@ Rails.application.routes.draw do
   resources :posts do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
+    get "/ranking"=>"ranking#index"
   end
 
+  
   get "/search"=>"searchs#search"
 
 end

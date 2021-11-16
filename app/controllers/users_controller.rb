@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)
   end
 
-　# いいね一覧ページ表示するためのアクション
+  # いいね一覧ページ表示するためのアクション
   def favorites
     @user = current_user
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
