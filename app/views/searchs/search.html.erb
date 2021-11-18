@@ -1,0 +1,18 @@
+<div class="post-list">
+  <h3>"<%= @keyword %>"一覧</h3>
+  <p>全<%= @posts.count %>件</p>
+  
+  <% @posts.each do |post| %>
+  
+    <div>
+    <td><%= image_tag('no_image.jpg') %><%= post.user.name %></td>
+    <td><%= attachment_image_tag post, :post_image %></td>
+    <td><%= render "favorites/favorite-btn", post: post %></td>
+    <td>Cafe's Name：<%= post.shop_name %></td>
+    <td>Text：<%= post.body %></td>
+    
+    </div>
+  
+  <% end %>
+  
+</div>
