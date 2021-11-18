@@ -1,32 +1,34 @@
-<table class='table  table-inverse'>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 mx-2 mx-sm-auto rounded px- my-5">
+     
 <h3>投稿一覧</h3>
+<table class= 'table' >
 <% @posts.each do |post| %>
  <tr id="post_<%= post.id %>">
-  
-<div>
   <!--プロフィール-->
-  <td><%= image_tag('no_image.jpg') %><%= post.user.name %>
+  <p><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %> <%= post.user.name %></p>
   <!--フォロー機能-->
    <%# if current_user.following?(@user) %>
    <%#= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
    <%# else %>
    <%#= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-success" %>
    <%# end %>
-　</td>
+
   <!--投稿画像-->
-  <td><%= attachment_image_tag post, :post_image %></td>
+  <p><%= attachment_image_tag post, :post_image %></p>
   <!--いいね-->
-  <td class="favorite-btn"><%= render "favorites/favorite-btn", post: post %></td>
+  <p class="favorite-btn"><%= render "favorites/favorite-btn", post: post %></p>
   <!--ショップ名-->
-  <td>Cafe's Name：<%= post.shop_name %></td>
+  <p>Shop Name：<%= post.shop_name %></p>
   <!--<p>Area : <%#= post.area_id %></p>-->
 
   <!--説明-->
-  <td>Text：<%= post.body %></td>
+  <p>Text：<%= post.body %></p>
 
   <!--評価-->
 
-         <td id="star-rate-<%= post.id %>">Recommend : </td>
+         <p id="star-rate-<%= post.id %>">Recommend : </p>
           <script>
           $('#star-rate-<%= post.id %>').raty({
             size: 36,
@@ -44,31 +46,32 @@
   <!--<table class="comments">-->
   <!--      <%#= render 'comments/index', post: post %>-->
   <!--    </table>-->
-  <td>Comments :<%= form_with model:[post, @comment] do |f| %>
-     <%= f.text_area :comment, size:"50x5",placeholder: "コメント" %>
-     <%= f.submit "Post" %>
-     <% end %></td>
+  <p>
+    Comments :<%= form_with model:[post, @comment] do |f| %>
+    <%= f.text_area :comment, size:"50x5",placeholder: "コメント" %>
+    <%= f.submit "Post" %>
+    <% end %>
+  </p>
      <%# if @comment.user == current_user %>
      <!--<div>-->
       <%#= link_to "削除", post_comment_path(post.id), method: :delete %>
      <!--</div>-->
      <%# end %>
 
-
-
-
-  </div>
   <!--<p>POST</p>-->
- <td>
+ <p>
   <% if post.user == current_user %>
    <%= link_to "Edit", edit_post_path(post.id) %>
   <% end %>
   <% if post.user == current_user %>
    <%= link_to "Destroy", post_path(post.id), method: :delete %>
   <% end %>
- </td>
-
-</div>
+ </p>
 </tr>
+<p class="border-bottom"></p>
 <% end %>
 </table>
+
+     </div>
+   </div>
+ </div>
