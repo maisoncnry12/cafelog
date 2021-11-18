@@ -1,10 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 mx-2 mx-sm-auto rounded px- my-5">
+
 <h3>Favorites</h3>
+<p class="border-bottom"></p>
 <% @favorite_posts.each do |post| %>
-<p><%= image_tag('no_image.jpg') %><%= post.user.name %></p>
+<p><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %> <%= post.user.name %></p>
 <p><%= attachment_image_tag post, :post_image %></p>
 <i class="fa fa-heart unlike-btn"></i>
 <%= post.favorites.length %>
-<p>Cafe's Name：<%= post.shop_name %></p>
+<p>Shop Name：<%= post.shop_name %></p>
 <p>Text：<%= post.body %></p>
 <p id="star-rate-<%= post.id %>">Recommend : </p>
 <script>
@@ -18,5 +23,12 @@
             score: <%= post.rate %>,
           });
           </script>
+          
+<!--投稿ごとに線を入れる-->
+<p class="border-bottom"></p>
 
 <% end %>
+
+    </div>
+  </div>
+</div>

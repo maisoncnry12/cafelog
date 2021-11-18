@@ -1,11 +1,15 @@
-<h3>New Cafe</h3>
-<%= form_with model: @post, local:true do |f| %>
-<div>Photo</div>
-<%= f.attachment_field :post_image %>
-<div>Cafe's Name</div>
-<%= f.text_field :shop_name %>
-<div>Text</div>
-<%= f.text_area :body %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 mx-2 mx-sm-auto rounded px- my-5">
+<!--テキスト全体を中央寄せ-->
+ <div class ="text-center">
+    <h3>新規投稿</h3>
+    <%= form_with model: @post, local:true do |f| %>
+    <div>Photo : <%= f.attachment_field :post_image %></div>
+    <div>Cafe's Name</div>
+    <%= f.text_field :shop_name %>
+    <div>Text</div>
+    <%= f.text_area :body %>
 
 <!--<div>Area</div>-->
 <%#= f.text_field :area_id %>
@@ -16,7 +20,7 @@
     <%= f.label :rate,'Recommend', class:' col-form-label' %>
     <%= f.hidden_field :rate, id: :review_star %>
  </div>
- 
+
    <!-- 評価javascript -->
   <script>
   $('#star').raty({
@@ -27,7 +31,13 @@
     scoreName: 'post[rate]',
     half: true,
   });
-  </script> 
-  
-<div><%= f.submit 'POST' %></div>
+  </script>
+
+<div><%= f.submit 'POST', class: "btn btn-secondary" %></div>
+<div><%= link_to "Back", "/"  %></div>
 <% end %>
+</div>
+
+    </div>
+  </div>
+</div>
