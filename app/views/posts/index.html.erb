@@ -2,6 +2,7 @@
 <h3>投稿一覧</h3>
 <% @posts.each do |post| %>
  <tr id="post_<%= post.id %>">
+  
 <div>
   <!--プロフィール-->
   <td><%= image_tag('no_image.jpg') %><%= post.user.name %>
