@@ -1,22 +1,22 @@
 <h3>投稿詳細</h3>
-
-<p><%= image_tag('no_image.jpg') %><%= @post.user.name %></p>
+<!--<tr id="post_<%#= post.id %>">-->
+<td><%= image_tag('no_image.jpg') %><%= @post.user.name %></td>
 
 <!--投稿画像-->
-  <p><%= attachment_image_tag @post, :post_image %></p>
+  <td><%= attachment_image_tag @post, :post_image %></td>
   <!--いいね-->
-   <p class="favorite-btn"><%= render "favorites/favorite-btn", post: @post %></p>
+   <td class="favorite-btn"><%= render "favorites/favorite-btn", post: @post %></td>
 
   <!--ショップ名-->
-  <p>Cafe's Name：<%= @post.shop_name %></p>
+  <td>Cafe's Name：<%= @post.shop_name %></td>
   <!--<p>Area : <%#= post.area_id %></p>-->
 
   <!--説明-->
-  <p>Text：<%= @post.body %></p>
+  <td>Text：<%= @post.body %></td>
 
   <!--評価-->
 
-         <div id="star-rate-<%= @post.id %>">Recommend : </div>
+         <td id="star-rate-<%= @post.id %>">Recommend : </td>
           <script>
           $('#star-rate-<%= @post.id %>').raty({
             size: 36,
@@ -35,11 +35,9 @@
    <p>Comments :<%= comment.comment %></p>
   <!--コメント削除-->
    <% if comment.user == current_user %>
-    <div>
      <p><%= link_to "削除", post_comment_path(comment.post.id, comment.id), method: :delete %></p>
-    </div>
    <% end %>
-
+</tr>
   <% end %>
 
   <div><%= link_to "Back", posts_path %></div>
