@@ -17,3 +17,14 @@
   @import "bootstrap";
   @import 'font-awesome-sprockets';
   @import 'font-awesome';
+
+  // ヘッダーフォント
+  .navbar {
+    font-family: 'Alegreya Sans SC', sans-serif;
+  }
+
+  // top画像スライダー
+  .c {
+    height: 600px;
+    width: 100%;
+  }
