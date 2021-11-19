@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1 mx-2 mx-sm-auto rounded px- my-5">
-     
+
 <h3>投稿一覧</h3>
 <table class= 'table' >
 <% @posts.each do |post| %>
- <tr id="post_<%= post.id %>">
+
   <!--プロフィール-->
-  <p><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %> <%= post.user.name %></p>
+  <tr><td style="border:none;"><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %> <%= post.user.name %></td></tr>
   <!--フォロー機能-->
    <%# if current_user.following?(@user) %>
    <%#= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
@@ -16,19 +16,22 @@
    <%# end %>
 
   <!--投稿画像-->
-  <p><%= attachment_image_tag post, :post_image %></p>
+
+  <tr><td style="border:none;"><%= attachment_image_tag post, :post_image, :fill, 500, 500 %></td></tr>
   <!--いいね-->
-  <p class="favorite-btn"><%= render "favorites/favorite-btn", post: post %></p>
+  <tr id="post_<%= post.id %>">
+  <td class="favorite-btn" style="border:none;"><%= render "favorites/favorite-btn", post: post %></td>
+  </tr>
   <!--ショップ名-->
-  <p>Shop Name：<%= post.shop_name %></p>
+  <tr><td style="border:none;">Shop Name：<%= post.shop_name %></td></tr>
   <!--<p>Area : <%#= post.area_id %></p>-->
 
   <!--説明-->
-  <p>Text：<%= post.body %></p>
+  <tr><td style="border:none;">Text：<%= post.body %></td></tr>
 
   <!--評価-->
 
-         <p id="star-rate-<%= post.id %>">Recommend : </p>
+         <tr><td style="border:none;" id="star-rate-<%= post.id %>">Recommend : </td></tr>
           <script>
           $('#star-rate-<%= post.id %>').raty({
             size: 36,
@@ -46,12 +49,12 @@
   <!--<table class="comments">-->
   <!--      <%#= render 'comments/index', post: post %>-->
   <!--    </table>-->
-  <p>
+  <tr><td style="border:none;">
     Comments :<%= form_with model:[post, @comment] do |f| %>
     <%= f.text_area :comment, size:"50x5",placeholder: "コメント" %>
     <%= f.submit "Post" %>
     <% end %>
-  </p>
+  </td></tr>
      <%# if @comment.user == current_user %>
      <!--<div>-->
       <%#= link_to "削除", post_comment_path(post.id), method: :delete %>
@@ -59,16 +62,18 @@
      <%# end %>
 
   <!--<p>POST</p>-->
- <p>
+ <tr><td style="border:none;">
   <% if post.user == current_user %>
    <%= link_to "Edit", edit_post_path(post.id) %>
   <% end %>
   <% if post.user == current_user %>
    <%= link_to "Destroy", post_path(post.id), method: :delete %>
   <% end %>
- </p>
-</tr>
-<p class="border-bottom"></p>
+ </td></tr>
+
+ <!--投稿ごとに区切り-->
+<td></td>
+
 <% end %>
 </table>
 
