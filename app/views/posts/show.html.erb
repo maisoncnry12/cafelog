@@ -1,22 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 mx-2 mx-sm-auto rounded px- my-5">
+
 <h3>投稿詳細</h3>
-<!--<tr id="post_<%#= post.id %>">-->
-<td><%= image_tag('no_image.jpg') %><%= @post.user.name %></td>
+<%= link_to "Back", posts_path %>
+<table class= 'table' >
+
+<tr><td style="border:none;"><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %> <%= @post.user.name %></td></tr>
 
 <!--投稿画像-->
-  <td><%= attachment_image_tag @post, :post_image %></td>
+  <tr><td style="border:none;"><%= attachment_image_tag @post, :post_image, :fill, 500, 500 %></td></tr>
   <!--いいね-->
-   <td class="favorite-btn"><%= render "favorites/favorite-btn", post: @post %></td>
+  <tr id="post_<%= @post.id %>">
+    <td class="favorite-btn" style="border:none;"><%= render "favorites/favorite-btn", post: @post %></td>
+  </tr>
 
   <!--ショップ名-->
-  <td>Cafe's Name：<%= @post.shop_name %></td>
+  <tr><td style="border:none;">Cafe's Name：<%= @post.shop_name %></td></tr>
   <!--<p>Area : <%#= post.area_id %></p>-->
 
   <!--説明-->
-  <td>Text：<%= @post.body %></td>
+  <tr><td style="border:none;">Text：<%= @post.body %></td></tr>
 
   <!--評価-->
 
-         <td id="star-rate-<%= @post.id %>">Recommend : </td>
+         <tr><td style="border:none;" id="star-rate-<%= @post.id %>">Recommend : </td></tr>
           <script>
           $('#star-rate-<%= @post.id %>').raty({
             size: 36,
@@ -32,12 +40,16 @@
 
   <!--コメント-->
   <% @comments.each do |comment| %>
-   <p>Comments :<%= comment.comment %></p>
+   <tr><td style="border:none;">Comments :<%= comment.comment %></td></tr>
   <!--コメント削除-->
    <% if comment.user == current_user %>
-     <p><%= link_to "削除", post_comment_path(comment.post.id, comment.id), method: :delete %></p>
+     <tr><td style="border:none;"><%= link_to "削除", post_comment_path(comment.post.id, comment.id), method: :delete %></td></tr>
    <% end %>
-</tr>
   <% end %>
 
-  <div><%= link_to "Back", posts_path %></div>
+  <tr><td style="border:none;"><%= link_to "Back", posts_path %></td></tr>
+
+  </table>
+      </div>
+    </div>
+  </div>

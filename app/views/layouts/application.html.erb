@@ -7,14 +7,19 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!--slickアプリケーション（画像スライダー）を呼び出す-->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   </head>
 
 <!--ヘッダー-->
   <body>
-    <header class="shadow-sm">
+    <header>
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <a class="navbar-brand p-3" href="/"><%= image_tag "cafelog.png", :size => '100x100' %></a>
+      <a class="navbar-brand p-3" href="/"><%= image_tag "cafelog.jpg", :size => '100x100' %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -29,11 +34,13 @@
            <li><%= link_to "ログアウト",destroy_user_session_path,method: :delete, class: 'nav-link active' %></li>
          </ul>
           <% else %>
+         <ul class="navbar-nav mr-5">
            <li><%= link_to "Home","/", class: 'nav-link active'  %></li>
            <li><%= link_to "About", about_path, class: 'nav-link active'  %></li>
            <li><%= link_to "新規登録",new_user_registration_path, class: 'nav-link active'  %></li>
            <li><%= link_to "ログイン",new_user_session_path, class: 'nav-link active'  %></li>
           <% end %>
+         </ul>
         </div>
         <div class="search-form">
           <% if user_signed_in? %>
