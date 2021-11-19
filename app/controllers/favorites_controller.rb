@@ -13,6 +13,7 @@ class FavoritesController < ApplicationController
   #   redirect_to posts_path
   # end
   
+  # 非同期通信
   def create
     @post = Post.find(params[:post_id])
     favorite = @post.favorites.new(user_id: current_user.id)
@@ -27,6 +28,7 @@ class FavoritesController < ApplicationController
   #   redirect_to posts_path
   # end
   
+  # 非同期通信
   def destroy
     @post = Post.find(params[:post_id])
     favorite = @post.favorites.find_by(user_id: current_user.id)

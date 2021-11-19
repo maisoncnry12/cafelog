@@ -15,7 +15,7 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+
 //= require_tree .
 
 (function(root, factory) {
@@ -28,6 +28,17 @@
   }
 }(this, function($) {
   'use strict';
+
+  // top画面スライダー
+  $(function() {
+      $('.a').slick({
+          dots: true,
+          // 自動で切り替わる
+          autoplay: true,
+          // スライドの表示時間
+          autoplaySpeed: 5000,
+      });
+  });
 
   $.raty = {
     cancelButton: false,
