@@ -7,16 +7,21 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]do
     # フォロー/フォロワー
    resource :relationships,only: [:create, :destroy]
-  # get 'followings' => 'relationships#followings', as: 'followings'
-  # get 'followers' => 'relationships#followers', as: 'followers'
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+  # いいね一覧へのルーティング
+   member do
+    get :favorites
+   end
   end
 
   resources :posts do
     resource :favorites, only: [:create, :destroy]
-     get 'post_favorite' => 'favorites#index'
     resources :comments, only: [:create, :destroy]
+    get "/ranking"=>"ranking#index"
   end
 
+  
   get "/search"=>"searchs#search"
 
 end
