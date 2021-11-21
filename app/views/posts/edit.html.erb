@@ -4,21 +4,22 @@
 
 
 <h3>投稿編集</h3>
+<p class="border-bottom"></p>
 <%= form_with model: @post, local:true do |f| %>
 
- <div>Photo</div>
+ <div class="mb-3">Photo<br />
  <%= attachment_image_tag @post, :post_image, :fill, 50, 50, fallback: "no_image2.jpg"%>
- <%= f.attachment_field :post_image %>
+ <%= f.attachment_field :post_image %></div>
 
- <div><label for="inputShopName">Cafe's Name</label></div>
- <%= f.text_field :shop_name, autofocus: true, id:"inpuShopName" %>
+ <div class="mb-3"><label for="inputShopName">Shop Name</label><br />
+ <%= f.text_field :shop_name, autofocus: true, id:"inpuShopName" %></div>
 
- <div><label for="inputBody">Text</label></div>
- <%= f.text_area :body, autofocus: true, id:"inputBody"%>
+ <div class="mb-3"><label for="inputBody">Text</label><br />
+ <%= f.text_area :body, autofocus: true, id:"inputBody"%></div>
 
+ <!--エリア-->
  <!--<div>Area</div>-->
  <%#= f.text_field :area_id %>
- <div>Recommend</div>
 
  <!--星の評価-->
  <div class="form-group" id="star">
@@ -38,8 +39,8 @@
   });
   </script>
 
- <div><%= f.submit 'Update' %></div>
- <div><%= link_to "Back", posts_path %></div>
+ <div class="mb-5"><%= f.submit 'Update', class: "btn btn-outline-danger" %></div>
+ <div><%= link_to "Home", "/" ,class: "fas fa-home" %></div>
 <% end %>
 
      </div>

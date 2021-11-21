@@ -5,12 +5,18 @@
 <h3>Favorites</h3>
 <p class="border-bottom"></p>
 <% @favorite_posts.each do |post| %>
+<!--プロフィール画像-->
 <p><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %> <%= post.user.name %></p>
-<p><%= attachment_image_tag post, :post_image %></p>
-<i class="fa fa-heart unlike-btn"></i>
-<%= post.favorites.length %>
-<p>Cafe's Name：<%= post.shop_name %></p>
+<!--投稿画像-->
+<p><%= attachment_image_tag post, :post_image, :fill, 500, 500 %></p>
+<!--いいね-->
+<p class="fa fa-heart unlike-btn">
+<%= post.favorites.length %></p>
+<!--ショップ名-->
+<p>Shop Name：<%= post.shop_name %></p>
+<!--説明-->
 <p>Text：<%= post.body %></p>
+<!--おすすめ度-->
 <p id="star-rate-<%= post.id %>">Recommend : </p>
 <script>
           $('#star-rate-<%= post.id %>').raty({
@@ -25,7 +31,7 @@
           </script>
 <p class="border-bottom"></p>
 <% end %>
-
+<div><%= link_to "Home", "/" ,class: "fas fa-home" %></div>
     </div>
   </div>
 </div>

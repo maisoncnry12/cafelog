@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-md-10 col-md-offset-1 mx-2 mx-sm-auto rounded px- my-5">
 
-<h3>投稿詳細</h3>
+<h3>Comments</h3>
+<p class="border-bottom"></p>
 <%= link_to "Back", posts_path %>
 <table class= 'table' >
 
@@ -39,11 +40,12 @@
         <!--/星評価-->
 
   <!--コメント-->
+  <tr><td style="border:none;">Comments </td></tr>
   <% @comments.each do |comment| %>
-   <tr><td style="border:none;">Comments :<%= comment.comment %></td></tr>
-  <!--コメント削除-->
+   <tr><td><%= comment.comment %>
+  <!--コメントしたユーザーのみ削除可能-->
    <% if comment.user == current_user %>
-     <tr><td style="border:none;"><%= link_to "削除", post_comment_path(comment.post.id, comment.id), method: :delete %></td></tr>
+     <%= link_to "", post_comment_path(comment.post.id, comment.id), method: :delete, class: "fas fa-trash-alt" %></td></tr>
    <% end %>
   <% end %>
 
