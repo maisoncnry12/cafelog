@@ -1,17 +1,38 @@
-<h3>User Info Edit</h3>
-<%= form_with model:@user, local:true do |f| %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 mx-2 mx-sm-auto rounded px- my-5">
 
-   <div>Profile Image</label></div>
-   <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg"%>
-   <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+    <div class ="text-center">
 
-  <div>
-   <label for="inputName">Name</label>
-   <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+   <h3>Edit</h3>
+   <p class="border-bottom"></p>
+   <!--バリデーション-->
+   <div class="my-3">
+      <% if @user.errors.any? %>
+        ※<%= @user.errors.count %>件のエラーが発生しました
+        <% @user.errors.full_messages.each do |message| %>
+        <%= message %>
+        <% end %>
+      <% end %>
+    </div>
+    
+   <%= form_with model: @user, local:true do |f| %>
+   <!--プロフィール画像-->
+   <div class="mt-2">・・・Profile Image・・・<br />
+   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg"%></div>
+   <div class="mb-4"><%= f.attachment_field :profile_image %></div>
+   <!--名前-->
+   <div class="mb-3"><label for="inputName">・・・・Name・・・・</label><br />
+   <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%></div>
+
+   <div class="mb-3"><label for="inputIntroduction">・・・Introduction・・・</label><br />
+   <%= f.text_area :introduction, size:"40*20", autofocus: true, id:"inputIntroduction",placeholder:"紹介文" %></div>
+
+   <div class="mb-5"><%= f.submit "Update", class: "btn btn-outline-secondary" %></div>
+   <div><%= link_to "Back", user_path(current_user) %> </div>
+   <% end %>
+   </div>
+
+    </div>
   </div>
-  <div>
-   <label for="inputIntroduction">Introduction</label>
-   <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction",placeholder:"紹介文" %>
-  </div>
-  <div><%= link_to "Back", user_path(current_user) %> <%= f.submit "Update" %></div>
-<% end %>
+</div>
