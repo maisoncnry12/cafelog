@@ -45,7 +45,7 @@
    <tr><td><%= comment.comment %>
   <!--コメントしたユーザーのみ削除可能-->
    <% if comment.user == current_user %>
-     <%= link_to "", post_comment_path(comment.post.id, comment.id), method: :delete, class: "fas fa-trash-alt" %></td></tr>
+     <%= link_to "", post_comment_path(comment.post.id, comment.id), method: :delete, data: {confirm: "削除しますか？"}, class: "fas fa-trash-alt" %></td></tr>
    <% end %>
   <% end %>
 
