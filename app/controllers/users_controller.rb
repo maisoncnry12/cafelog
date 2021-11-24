@@ -11,8 +11,18 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+     if @user.update(user_params)
+      redirect_to user_path(@user.id)
+    else
+      render :edit
+    end
+  end
+
+  # いいね一覧ページ表示するためのアクション
+  def favorites
+    @user = current_user
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.where(id: favorites).page(params[:page]).per(8).reverse_order
   end
 
   private
