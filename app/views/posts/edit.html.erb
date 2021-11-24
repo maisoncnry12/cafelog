@@ -5,6 +5,15 @@
 
 <h3>投稿編集</h3>
 <p class="border-bottom"></p>
+<!--バリデーション-->
+    <div class="my-3">
+      <% if @post.errors.any? %>
+        ※<%= @post.errors.count %>件のエラーが発生しました
+        <% @post.errors.full_messages.each do |message| %>
+        <%= message %>
+        <% end %>
+      <% end %>
+    </div>
 <%= form_with model: @post, local:true do |f| %>
 
  <div class="mb-3">Photo<br />

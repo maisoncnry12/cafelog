@@ -6,8 +6,17 @@
 
    <h3>Edit</h3>
    <p class="border-bottom"></p>
+   <!--バリデーション-->
+   <div class="my-3">
+      <% if @user.errors.any? %>
+        ※<%= @user.errors.count %>件のエラーが発生しました
+        <% @user.errors.full_messages.each do |message| %>
+        <%= message %>
+        <% end %>
+      <% end %>
+    </div>
+    
    <%= form_with model: @user, local:true do |f| %>
-
    <!--プロフィール画像-->
    <div class="mt-2">・・・Profile Image・・・<br />
    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg"%></div>
