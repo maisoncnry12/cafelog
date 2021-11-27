@@ -6,13 +6,6 @@ class FavoritesController < ApplicationController
     @posts = Post.all
   end
 
-  # def create
-  #   post = Post.find(params[:post_id])
-  #   favorite = current_user.favorites.new(post_id: post.id)
-  #   favorite.save
-  #   redirect_to posts_path
-  # end
-
   # 非同期通信
   def create
     @post = Post.find(params[:post_id])
@@ -20,13 +13,6 @@ class FavoritesController < ApplicationController
     favorite.save
     # app/views/favorites/create.js.erbを参照する
   end
-
-  # def destroy
-  #   post = Post.find(params[:post_id])
-  #   favorite = current_user.favorites.find_by(post_id: post.id)
-  #   favorite.destroy
-  #   redirect_to posts_path
-  # end
 
   # 非同期通信
   def destroy
