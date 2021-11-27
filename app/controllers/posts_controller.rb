@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   def new
     @post = Post.new
   end
@@ -8,7 +7,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-     redirect_to posts_path
+      redirect_to posts_path
     else
       render :new
     end
@@ -16,7 +15,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @posts = Post.all.order(created_at: :desc) #投稿新着順
+    @posts = Post.all.order(created_at: :desc) # 投稿新着順
     @comment = Comment.new
   end
 
@@ -33,7 +32,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-     if @post.update(post_params)
+    if @post.update(post_params)
       redirect_to posts_path
     else
       render :edit
@@ -47,8 +46,8 @@ class PostsController < ApplicationController
   end
 
   private
+
   def post_params
     params.require(:post).permit(:user_id, :shop_name, :post_image, :body, :rate, :area_id)
   end
-
 end

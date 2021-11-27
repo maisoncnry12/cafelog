@@ -6,11 +6,11 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.post_id = @post.id
     @comment.user_id = current_user.id
-     if @comment.save
-       redirect_to post_path(@post.id)
-     else
-       render "posts/index"
-     end
+    if @comment.save
+      redirect_to post_path(@post.id)
+    else
+      render 'posts/index'
+    end
   end
 
   # 非同期通信
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
   # end
 
   def destroy
-    Comment.find_by(id: params[:id],post_id: params[:post_id]).destroy
+    Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
     redirect_to request.referer
   end
 
@@ -37,8 +37,8 @@ class CommentsController < ApplicationController
   # end
 
   private
+
   def comment_params
     params.require(:comment).permit(:user_id, :post_id, :comment)
   end
-
 end

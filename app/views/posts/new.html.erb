@@ -1,52 +1,53 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1 mx-2 mx-sm-auto rounded px- my-5">
-
-    <h3>新規投稿</h3>
-    <p class="border-bottom"></p>
-    <!--バリデーション-->
-    <div class="my-3">
-      <% if @post.errors.any? %>
-        ※<%= @post.errors.count %>件のエラーが発生しました
-        <% @post.errors.full_messages.each do |message| %>
-        <%= message %>
+      <h3>新規投稿</h3>
+      <p class="border-bottom"></p>
+      <!--バリデーション-->
+      <div class="my-3">
+        <% if @post.errors.any? %>
+          ※<%= @post.errors.count %>件のエラーが発生しました
+          <% @post.errors.full_messages.each do |message| %>
+          <%= message %>
+          <% end %>
         <% end %>
+      </div>
+      <%= form_with model: @post, local:true do |f| %>
+        <div class="mb-3">Photo<br />
+          <%= f.attachment_field :post_image %>
+        </div>
+        <div class="mb-3">Shop Name<br />
+          <%= f.text_field :shop_name, size: 30  %>
+        </div>
+        <div class="mb-3">Text<br />
+          <%= f.text_area :body, size: "30x5"%>
+        </div>
+        <!--エリア-->
+        <!--<div>Area</div>-->
+        <!--<%#= f.text_field :area_id %>-->
+        <!--星の評価-->
+        <div class="form-group" id="star">
+          <%= f.label :rate,'Recommend', class:' col-form-label' %>
+          <%= f.hidden_field :rate, id: :review_star %>
+            <!-- 評価javascript -->
+            <script>
+              $('#star').raty({
+              size     : 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              scoreName: 'post[rate]',
+              half: true,
+              });
+            </script>
+        </div>
+        <div class="mb-5">
+          <%= f.submit 'POST', class: "btn btn-outline-danger" %>
+        </div>
+        <div>
+          <%= link_to "Home", "/" ,class: "fas fa-home" %>
+        </div>
       <% end %>
-    </div>
-
-
-    <%= form_with model: @post, local:true do |f| %>
-    <div class="mb-3">Photo<br />
-    <%= f.attachment_field :post_image %></div>
-    <div class="mb-3">Shop Name<br />
-    <%= f.text_field :shop_name, size: 30  %></div>
-    <div class="mb-3">Text<br />
-    <%= f.text_area :body, size: "30x5"%></div>
-    <!--エリア-->
-    <!--<div>Area</div>-->
-    <!--<%#= f.text_field :area_id %>-->
-    <!--星の評価-->
-    <div class="form-group" id="star">
-    <%= f.label :rate,'Recommend', class:' col-form-label' %>
-    <%= f.hidden_field :rate, id: :review_star %>
-    </div>
-
-   <!-- 評価javascript -->
-  <script>
-  $('#star').raty({
-    size     : 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>',
-    scoreName: 'post[rate]',
-    half: true,
-  });
-  </script>
-
-<div class="mb-5"><%= f.submit 'POST', class: "btn btn-outline-danger" %></div>
-<div><%= link_to "Home", "/" ,class: "fas fa-home" %></div>
-<% end %>
-
     </div>
   </div>
 </div>

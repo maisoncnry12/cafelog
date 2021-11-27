@@ -1,9 +1,9 @@
 # 1 require 'rails_helper'
-# 2	 
+# 2
 # 3	describe '投稿のテスト' do
 # 4	  let!(:post) { create(:post,shop_name:'hoge',body:'body') }
 # 5	  describe 'トップ画面(root_path)のテスト' do
-# 6	    before do 
+# 6	    before do
 # 7	      visit root_path
 # 8	    end
 # 9	    context '表示の確認' do

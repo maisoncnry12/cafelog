@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 1
-kanari@kanari
+kanari @kanari
 kanari
 
 2
-canari@canari
+canari @canari
 canari
