@@ -61,7 +61,7 @@
   <!--コメント-->
   <tr><td style="border:none;">
     <%= link_to "Comments", post_path(post.id) %>
-    <%= form_with model:[post, @comment] do |f| %>
+    <%= form_with model:[post, @comment], local: true do |f| %>
     <%= f.text_area :comment, size:"50x5",placeholder: "コメントを書いてください" %>
     <%= f.submit "Post", class: "btn btn-sm btn-outline-danger"  %>
     <% end %>

@@ -46,18 +46,7 @@
 <div class="mb-5"><%= f.submit 'POST', class: "btn btn-outline-danger" %></div>
 <div><%= link_to "Home", "/" ,class: "fas fa-home" %></div>
 <% end %>
-<!--</div>-->
 
     </div>
   </div>
 </div>
- <!-- 評価javascript -->
-<script>
-$('#star').raty({
-  size     : 36,
-  starOff:  '<%= asset_path('star-off.png') %>',
-  starOn : '<%= asset_path('star-on.png') %>',
-  starHalf: '<%= asset_path('star-half.png') %>',
-  scoreName: 'post[rate]',
-  half: true,
-});
