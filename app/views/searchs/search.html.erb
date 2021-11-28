@@ -1,53 +1,52 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1 mx-2 mx-sm-auto rounded px- my-5">
-
-<div class="post-list">
-  <h3>"<%= @keyword %>"一覧</h3>
-  <p class="border-bottom"></p>
-  <p>全<%= @posts.count %>件</p>
-  
-  <table class= 'table' >
-  <% @posts.each do |post| %>
-    <div>
-      <!--プロフィール-->
-      <tr>
-        <td style="border:none;">
-          <%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %>
-          <%= post.user.name %>
-        </td>
-      </tr>
-      <!--投稿画像-->
-      <tr>
-        <td style="border:none;">
-          <%= attachment_image_tag post, :post_image, :fill, 500, 500  %>
-        </td>
-      </tr>
-      <!--いいね-->
-      <tr>
-        <td style="border:none;">
-          <p class="fa fa-heart unlike-btn"><%= post.favorites.length %></p>
-        </td>
-      </tr>
-      <!--ショップ名-->
-      <tr>
-        <td style="border:none;">
-          Shop Name：<%= post.shop_name %>
-        </td>
-      </tr>
-      <!--説明文-->
-      <tr>
-        <td style="border:none;">
-          Text：<%= post.body %>
-         </td>
-      </tr>
-    </div>
-      <!--投稿ごとに区切り-->
-    <td></td>
-  <% end %>
-  </table>
- </div>
-
+      <div class="post-list">
+      <h3>"<%= @keyword %>"一覧</h3>
+      <p class="border-bottom"></p>
+      <p>全<%= @posts.count %>件</p>
+        <table class= 'table' >
+          <% @posts.each do |post| %>
+            <div>
+              <!--プロフィール-->
+              <tr>
+                <td style="border:none;">
+                  <%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %>
+                  <%= post.user.name %>
+                </td>
+              </tr>
+              <!--投稿画像-->
+              <tr>
+                <td style="border:none;">
+                  <%= attachment_image_tag post, :post_image, :fill, 500, 500  %>
+                </td>
+              </tr>
+              <!--いいね-->
+              <tr>
+                <td style="border:none;">
+                  <p class="fa fa-heart unlike-btn">
+                    <%= post.favorites.length %>
+                  </p>
+                </td>
+              </tr>
+              <!--ショップ名-->
+              <tr>
+                <td style="border:none;">
+                  Shop Name：<%= post.shop_name %>
+                </td>
+              </tr>
+              <!--説明文-->
+              <tr>
+                <td style="border:none;">
+                  Text：<%= post.body %>
+                 </td>
+              </tr>
+            </div>
+            <!--投稿ごとに区切り-->
+            <td></td>
+          <% end %>
+        </table>
+      </div>
     </div>
   </div>
 </div>

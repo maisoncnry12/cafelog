@@ -1,57 +1,79 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1 mx-2 mx-sm-auto rounded px- my-5">
-
-<h3>Comments</h3>
-<p class="border-bottom"></p>
-<%= link_to "Back", posts_path %>
-<table class= 'table' >
-
-<tr><td style="border:none;"><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %> <%= @post.user.name %></td></tr>
-
-<!--投稿画像-->
-  <tr><td style="border:none;"><%= attachment_image_tag @post, :post_image, :fill, 500, 500 %></td></tr>
-  <!--いいね-->
-  <tr id="post_<%= @post.id %>">
-    <td class="favorite-btn" style="border:none;"><%= render "favorites/favorite-btn", post: @post %></td>
-  </tr>
-
-  <!--ショップ名-->
-  <tr><td style="border:none;">Cafe's Name：<%= @post.shop_name %></td></tr>
-  <!--<p>Area : <%#= post.area_id %></p>-->
-
-  <!--説明-->
-  <tr><td style="border:none;">Text：<%= @post.body %></td></tr>
-
-  <!--評価-->
-
-         <tr><td style="border:none;" id="star-rate-<%= @post.id %>">Recommend : </td></tr>
-          <script>
-          $('#star-rate-<%= @post.id %>').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= @post.rate %>,
-          });
-          </script>
-        <!--/星評価-->
-
-  <!--コメント-->
-  <tr><td style="border:none;">Comments </td></tr>
-  <% @comments.each do |comment| %>
-   <tr><td><%= comment.comment %>
-  <!--コメントしたユーザーのみ削除可能-->
-   <% if comment.user == current_user %>
-     <%= link_to "", post_comment_path(comment.post.id, comment.id), method: :delete, data: {confirm: "削除しますか？"}, class: "fas fa-trash-alt" %></td></tr>
-   <% end %>
-  <% end %>
-
-  <tr><td style="border:none;"><%= link_to "Back", posts_path %></td></tr>
-
-  </table>
-      </div>
+      <h3>Comments</h3>
+      <p class="border-bottom"></p>
+      <%= link_to "Back", posts_path %>
+      <table class= 'table' >
+        <tr>
+          <td style="border:none;">
+            <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %> <%= @post.user.name %>
+          </td>
+        </tr>
+        <!--投稿画像-->
+        <tr>
+          <td style="border:none;">
+            <%= attachment_image_tag @post, :post_image, :fill, 500, 500 %>
+          </td>
+        </tr>
+        <!--いいね-->
+        <tr id="post_<%= @post.id %>">
+          <td class="favorite-btn" style="border:none;">
+            <%= render "favorites/favorite-btn", post: @post %>
+          </td>
+        </tr>
+        <!--ショップ名-->
+        <tr>
+          <td style="border:none;">
+            Cafe's Name：<%= @post.shop_name %>
+          </td>
+        </tr>
+        <!--<p>Area : <%#= post.area_id %></p>-->
+        <!--説明-->
+        <tr>
+          <td style="border:none;">
+            Text：<%= @post.body %>
+          </td>
+        </tr>
+        <!--星評価-->
+        <tr>
+          <td style="border:none;" id="star-rate-<%= @post.id %>">
+            Recommend :
+          </td>
+        </tr>
+        <!--javascript-->
+                <script>
+                $('#star-rate-<%= @post.id %>').raty({
+                  size: 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  score: <%= @post.rate %>,
+                });
+                </script>
+        <!--コメント-->
+        <tr>
+          <td style="border:none;">
+            Comments
+          </td>
+        </tr>
+        <% @comments.each do |comment| %>
+        <tr>
+          <td>
+            <%= comment.comment %>
+            <!--コメントしたユーザーのみ削除可能-->
+            <% if comment.user == current_user %>
+            <%= link_to "", post_comment_path(comment.post.id, comment.id), method: :delete, data: {confirm: "削除しますか？"}, class: "fas fa-trash-alt" %></td></tr>
+            <% end %>
+        <% end %>
+        <tr>
+          <td style="border:none;">
+            <%= link_to "Back", posts_path %>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
+</div>

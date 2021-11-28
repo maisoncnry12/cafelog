@@ -1,31 +1,37 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1 mx-2 mx-sm-auto rounded px- my-5">
-
-<h3>Ranking</h3>
-<table class = table >
- <thead>
-  <tr>
-    <th></th>
-    <th>Photo</th>
-    <th>Shop Name</th>
-    <th>Favorites</th>
-  </tr>
- </thead>
-
- <tbody>
-   <!--いいね多い順に表示-->
-<% @all_ranks.each.with_index(1)  do |post, i| %>
-  <tr>
-    <td>No.<%= i %></td>
-    <td><%= attachment_image_tag post, :post_image, size: "200x200" %></td>
-    <td><%= post.shop_name %></td>
-    <td><i class="fa fa-heart "></i><%= post.favorites.length %></td>
-  </tr>
-</tbody>
-<% end %>
-</table>
-
+      <h3>Ranking</h3>
+      <table class = table >
+        <thead>
+          <tr>
+            <th></th>
+            <th>Photo</th>
+            <th>Shop Name</th>
+            <th>Favorites</th>
+          </tr>
+        </thead>
+        <tbody>
+        <!--いいね多い順に表示-->
+        <% @all_ranks.each.with_index(1)  do |post, i| %>
+          <tr>
+            <td>
+              No.<%= i %>
+            </td>
+            <td>
+              <%= attachment_image_tag post, :post_image, size: "200x200" %>
+            </td>
+            <td>
+              <%= post.shop_name %>
+            </td>
+            <td>
+              <i class="fa fa-heart "></i>
+              <%= post.favorites.length %>
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
     </div>
   </div>
 </div>
