@@ -16,10 +16,9 @@
 同じ趣味を持っている人がおすすめするカフェを知りたいとき、自分の行ったお店を記録として利用したいとき
 
 ## 設計書
-後日掲載</br>
-ER図</br>
-テーブル定義書</br>
-アプリケーション詳細設計書</br>
+[ER図](https://app.diagrams.net/#G13koPAvIC5uoJpUlGvaMF6vakweKQ4vGK)</br>
+[テーブル定義書](https://docs.google.com/spreadsheets/d/1M-9-9ttZG2pTkg1Q3G3NqgdxWiwJFUUFc9RJAiy8BMg/edit#gid=518637024)</br>
+[アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1j0PHOMCcR_pp6_RZdT7fWxrCSHKQ9gBilIq93VvyDVs/edit#gid=2133469642)</br>
 gem
 
 ## チャレンジ要素一覧
@@ -33,4 +32,5 @@ https://docs.google.com/spreadsheets/d/1iLCIShQ8B0HJYOIrh5fJfpCn84Gzu50Rqfan4XW2
 - IDE：Cloud9
 
 ## 使用素材
-後日掲載
+https://fonts.google.com/ </br>
+https://fontawesome.com/
