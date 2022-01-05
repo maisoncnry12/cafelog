@@ -8,8 +8,10 @@
           <!--プロフィール-->
             <tr>
               <td style="border:none;">
-                <%= link_to attachment_image_tag post.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %>
-                <%= link_to post.user.name, user_path(post.user) %>
+                <%= link_to user_path(post.user) do %>
+                  <%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %>
+                <% end %>
+                  <%= link_to post.user.name, user_path(post.user) %>
             <!--フォロー機能-->
                 <% if current_user.following?(post.user) %>
                  <i class="ml-5"><%= link_to "フォロー中", user_relationships_path(post.user.id), method: :delete, class: "fas fa-user-alt text-dark" %></i>
