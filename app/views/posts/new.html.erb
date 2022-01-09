@@ -6,9 +6,11 @@
       <!--バリデーション-->
       <div class="my-3">
         <% if @post.errors.any? %>
-          ※<%= @post.errors.count %>件のエラーが発生しました
+          ※<%= @post.errors.count %>件のエラーが発生しました</br>
           <% @post.errors.full_messages.each do |message| %>
-          <%= message %>
+          <li>
+            <%= message %></br>
+          </li>
           <% end %>
         <% end %>
       </div>
