@@ -5,9 +5,11 @@
         <p class="border-bottom"></p>
         <%= link_to "Back", posts_path %>
           <table class= 'table' >
+            <!--プロフィール-->
             <tr>
               <td style="border:none;">
-                <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %> <%= @post.user.name %>
+                <%= attachment_image_tag @post.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %>
+                <%= @post.user.name %>
               </td>
             </tr>
             <!--投稿画像-->
