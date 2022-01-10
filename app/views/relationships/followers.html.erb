@@ -1,7 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1 mx-2 mx-sm-auto rounded px- my-5">
-      <h2>Follower Users</h2>
+      <!--<h2>Follower Users</h2>-->
+      <h3>
+        <%= @user.name %>がフォロされている一覧
+      </h3>
       <% if @users.exists? %>
         <table class='table'>
           <thead>
