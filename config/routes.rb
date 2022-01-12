@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   resources :posts do
     resource :favorites, only: %i[create destroy]
     resources :comments, only: %i[create destroy]
-    get '/ranking' => 'ranking#index'
   end
 
+  get '/ranking' => 'ranking#index'
   get '/search' => 'searchs#search'
 end

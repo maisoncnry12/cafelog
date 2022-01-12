@@ -42,7 +42,7 @@
            <li><%= link_to "新規投稿", new_post_path, class: 'nav-link active'  %></li>
            <li><%= link_to "投稿一覧", posts_path, class: 'nav-link active' %></li>
            <li><%= link_to "Favorites", favorites_user_path(current_user), class: 'nav-link active' %></li>
-           <li><%= link_to "Ranking", post_ranking_path(current_user), class: 'nav-link active' %></li>
+           <li><%= link_to "Ranking", ranking_path(current_user), class: 'nav-link active' %></li>
            <li><%= link_to "My Page", user_path(current_user), class: 'nav-link active' %></li>
            <li><%= link_to "Log Out",destroy_user_session_path,method: :delete, class: 'nav-link active' %></li>
           </li>
